@@ -62,12 +62,15 @@ class Minesweeper:
                 print("Congratulations! You won!")
                 break
             try:
-                x = int(input("Enter x coordinate: "))
-                y = int(input("Enter y coordinate: "))
-                if not self.reveal(x, y):
-                    self.print_board(reveal=True)
-                    print("Game Over! You hit a mine.")
-                    break
+                x = int(input("Enter x coordinate (0-9): "))
+                y = int(input("Enter y coordinate (0-9): "))
+                if 0 <= x < 10 and 0 <= y < 10:  # Validate range
+                    if not self.reveal(x, y):
+                        self.print_board(reveal=True)
+                        print("Game Over! You hit a mine.")
+                        break
+                else:
+                    print("Invalid input. Please enter numbers between 0 and 9.")
             except ValueError:
                 print("Invalid input. Please enter numbers only.")
 
